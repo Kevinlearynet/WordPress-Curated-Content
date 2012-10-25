@@ -101,58 +101,58 @@ class GoogleReaderAPI
 
 	public function get_tag_list( $output = 'json' )
 	{
-		return $this->request2google('tag/list', "get", false, array(
-				'output' => $output,
-				'ck' => time(),
-				'client' => $this->client,
-			));
+		return $this->request2google( 'tag/list', "get", false, array(
+			'output' => $output,
+			'ck' => time(),
+			'client' => $this->client,
+		) );
 	}
 	public function get_subscription_list( $output = 'json' )
 	{
-		return $this->request2google('subscription/list', "get", false, array(
-				'output' => $output,
-				'ck' => time(),
-				'client' => $this->client,
-			));
+		return $this->request2google( 'subscription/list', "get", false, array(
+			'output' => $output,
+			'ck' => time(),
+			'client' => $this->client,
+		) );
 	}
 	public function get_preference_list( $output = 'json' )
 	{
-		return $this->request2google('preference/list', "get", false, array(
-				'output' => $output,
-				'ck' => time(),
-				'client' => $this->client,
-			));
+		return $this->request2google( 'preference/list', "get", false, array(
+			'output' => $output,
+			'ck' => time(),
+			'client' => $this->client,
+		) );
 	}
 	public function get_unread_count( $output = 'json' )
 	{
-		return $this->request2google('unread-count', "get", false, array(
-				'all' => true,
-				'output' => $output,
-				'ck' => time(),
-				'client' => $this->client,
-			));
+		return $this->request2google( 'unread-count', "get", false, array(
+			'all' => true,
+			'output' => $output,
+			'ck' => time(),
+			'client' => $this->client,
+		) );
 	}
 	public function get_user_info( $output = 'json' )
 	{
-		return $this->request2google('user-info', "get", false, array(
-				'output' => $output,
-				'ck' => time(),
-				'client' => $this->client,
-			));
+		return $this->request2google( 'user-info', "get", false, array(
+			'output' => $output,
+			'ck' => time(),
+			'client' => $this->client,
+		) );
 	}
 	private function get_token()
 	{
 		$this->token = $this->request2google('token');
 	}
 
-	//get contents functions
-	/*
-          r - order
-          r = n - new items
-          r = o - old items
-          r = a - auto sort
-
-     */
+	/**
+	 * Get Contents
+	 *
+	 * r - order
+	 * r = n - new items
+	 * r = o - old items
+	 * r = a - auto sort
+	 */
 	private function get_content( $content_url = '', $number = 20, $order = 'n', $exclude_target = '', $start_time = '', $continuation = '')
 	{
 		$fields = array(
@@ -192,9 +192,9 @@ class GoogleReaderAPI
 		return $this->get_content_by_state( 'starred', $number, $order, '', $time );
 	}
 
-	/*
-     Edit functions
-     */
+	/**
+	 * Edit functions
+	 */
 	private function edit_do( $api_function , $post_fields )
 	{
 		$post_fields['T'] = $this->token;
@@ -205,9 +205,6 @@ class GoogleReaderAPI
 		}
 	}
 
-	/* public function edit_subscription(
-     s     return $this->edit_do( 'subscription/edit',
-     } */
 	public function set_state( $itemId, $state = 'read')
 	{
 		$post_fields = array(
@@ -227,7 +224,7 @@ class GoogleReaderAPI
 			"Passwd" => $password,
 			"service" => $this->service,
 			"source" => $this->source,
-		));
+		) );
 
 		if ( $response['code'] == 200) {
 			preg_match("/Auth=([a-z0-9_\-]+)/i", $response['body'], $matches_auth);
