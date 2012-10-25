@@ -1,7 +1,9 @@
 WordPress Curated Content
 =========================
 
-WordPress plugin used for curating content from Google Reader's starred items feed. This includes a few theme files I use on to power the [curated web design resources](http://www.kevinleary.net/curated/) section of my site.
+WordPress plugin used for curating content from Google Reader's starred items feed. The `themes` folder includes a theme files I'm currently using to power the [curated web design resources](http://www.kevinleary.net/curated/) section of my site. 
+
+The `template-curated-rss.php` template is used to automate a weekly [Mailchimp](http://mailchimp.com/) RSS to Email campaign.
 
 * Author:    Kevin Leary (<info@kevinleary.net>)
 * Date:      October, 2012
